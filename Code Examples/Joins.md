@@ -15,10 +15,10 @@
 ###### ORDER BY country_revenue DESC		
 
 ###### SELECT D.country,		
-		###### COUNT(A.customer_id) AS total_customers,
-		###### SUM(E.amount) AS country_revenue, 
-		###### ROUND(SUM(E.amount),2) AS tot_country_revenue, 
-		###### MODE() WITHIN GROUP (ORDER by f.rating)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUNT(A.customer_id) AS total_customers,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUM(E.amount) AS country_revenue, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROUND(SUM(E.amount),2) AS tot_country_revenue, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MODE() WITHIN GROUP (ORDER by f.rating)
 ###### FROM customer A		
 ###### INNER JOIN address B ON A.address_id = B.address_id		
 ###### INNER JOIN city C ON B.city_id = C.city_id		
@@ -31,15 +31,15 @@
 ###### ORDER BY country_revenue DESC		
 
 ###### SELECT A.category_id,		
-		###### A.name,
-		###### C.rental_duration, 
-		###### C.rating
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A.name,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C.rental_duration, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C.rating
 ###### FROM category A		
 ###### INNER JOIN film_category B ON A.category_id = B.category_id		
 ###### INNER JOIN film C ON B.film_id = C.film_id		
 ###### GROUP BY A.category_id,		
-		###### C.rental_duration,
-		###### C.rating
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ###### C.rental_duration,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ###### C.rating
 ###### ORDER BY rental_duration DESC		
 
 
