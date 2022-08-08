@@ -1,45 +1,35 @@
-###### SELECT D.country,		
-###### COUNT(A.customer_id) AS total_customers,
-###### SUM(E.amount) AS country_revenue, 
-###### ROUND(avg(E.amount),2) AS avg_country_revenue, 
-###### MODE() WITHIN GROUP (ORDER by f.rating)
-###### FROM customer A		
-###### INNER JOIN address B ON A.address_id = B.address_id		
-###### INNER JOIN city C ON B.city_id = C.city_id		
-###### INNER JOIN country D ON C.country_id = D.country_id		
-###### INNER JOIN payment E ON A.customer_id = E.customer_id		
-###### INNER JOIN rental R ON R.rental_id = E.rental_id		
-###### INNER JOIN inventory I ON I.inventory_id = R.inventory_id		
-###### INNER JOIN film F ON F.film_id = I.film_id		
-###### GROUP BY country 		
-###### ORDER BY country_revenue DESC		
+The queries below were involved joining multiple tables to receive the desired information
 
-###### SELECT D.country,		
-###### COUNT(A.customer_id) AS total_customers,
-###### SUM(E.amount) AS country_revenue, 
-###### ROUND(SUM(E.amount),2) AS tot_country_revenue, 
-###### MODE() WITHIN GROUP (ORDER by f.rating)
-###### FROM customer A		
-###### INNER JOIN address B ON A.address_id = B.address_id		
-###### INNER JOIN city C ON B.city_id = C.city_id		
-###### INNER JOIN country D ON C.country_id = D.country_id		
-###### INNER JOIN payment E ON A.customer_id = E.customer_id		
-###### INNER JOIN rental R ON R.rental_id = E.rental_id		
-###### INNER JOIN inventory I ON I.inventory_id = R.inventory_id		
-###### INNER JOIN film F ON F.film_id = I.film_id		
-###### GROUP BY country 		
-###### ORDER BY country_revenue DESC		
+Top 10 Customers by Revenue: 
 
-###### SELECT A.category_id,		
-###### A.name,
-###### C.rental_duration, 
-###### C.rating
-###### FROM category A		
-###### INNER JOIN film_category B ON A.category_id = B.category_id		
-###### INNER JOIN film C ON B.film_id = C.film_id		
-###### GROUP BY A.category_id,		
-###### C.rental_duration,
-###### C.rating
-###### ORDER BY rental_duration DESC		
+SELECT D.country,		
+    COUNT(A.customer_id) AS total_customers,
+    SUM(E.amount) AS country_revenue, 
+    ROUND(avg(E.amount),2) AS avg_country_revenue, 
+    MODE() WITHIN GROUP (ORDER by f.rating)
+FROM customer A		
+INNER JOIN address B ON A.address_id = B.address_id		
+INNER JOIN city C ON B.city_id = C.city_id		
+INNER JOIN country D ON C.country_id = D.country_id		
+INNER JOIN payment E ON A.customer_id = E.customer_id		
+INNER JOIN rental R ON R.rental_id = E.rental_id		
+INNER JOIN inventory I ON I.inventory_id = R.inventory_id		
+INNER JOIN film F ON F.film_id = I.film_id		
+GROUP BY country 		
+ORDER BY country_revenue DESC		
+
+Rental Duration by Category and Rating:
+
+SELECT A.category_id,		
+    A.name,
+    C.rental_duration, 
+    C.rating
+FROM category A		
+INNER JOIN film_category B ON A.category_id = B.category_id		
+INNER JOIN film C ON B.film_id = C.film_id		
+GROUP BY A.category_id,		
+    C.rental_duration,
+    C.rating
+ORDER BY rental_duration DESC		
 
 
