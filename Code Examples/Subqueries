@@ -1,6 +1,6 @@
 The following queries used subqueries to find more information about the top 5 customers. 
 
---Average amount paid by top 5 customers:--
+--Average amount paid by top 5 customers--
 
 SELECT AVG(total_amount_paid) AS average
 FROM (SELECT A.customer_id,
@@ -30,7 +30,7 @@ GROUP BY A.customer_id,
 ORDER BY total_amount_paid DESC
 LIMIT 5) AS total_amount_paid
           
---How many top 5 customers are in each country:--
+--How many top 5 customers are in each country--
 
 SELECT COUNT(DISTINCT customer.customer_id) AS all_customer_count, 
 COUNT (DISTINCT customer.customer_id) AS top_customer_count, 
