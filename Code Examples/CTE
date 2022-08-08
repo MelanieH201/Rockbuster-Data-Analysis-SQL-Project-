@@ -1,1 +1,74 @@
+The following queries were used to give information about the top 5 customers. 
 
+--Average amount spent by top 5 customers--
+
+WITH average_cte (customer_id, first_name, last_name, city, country, amount) AS
+(SELECT A.customer_id,
+             A.first_name, 
+             A.last_name, 
+             C.city, 
+             D.country, 
+             SUM(E.amount) AS total_amount_paid
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN('Aurora,'
+              'Cuauhtmoc',
+              'Ktahya',
+              'Coatzacoalcos',
+              'Warren',
+              'Greensboro',
+              'Sorocaba',
+              'Penalang',
+              'Arlington',
+              'Bellevue')
+GROUP BY A.customer_id,
+         C.city,
+         D.country,
+ORDER BY total_amount_paid DESC
+LIMIT 5) 
+SELECT AVG(amount)
+FROM average_cte
+
+--How many top 5 customers are in each country--
+
+WITH customer_count_cte (customer_id, first_name, last_name, city, country, amount) AS
+(SELECT A.customer_id,
+             A.first_name, 
+             A.last_name, 
+             C.city, 
+             D.country, 
+             SUM(E.amount) AS total_amount_paid
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN('Aurora,'
+              'Cuauhtmoc',
+              'Ktahya',
+              'Coatzacoalcos',
+              'Warren',
+              'Greensboro',
+              'Sorocaba',
+              'Penalang',
+              'Arlington',
+              'Bellevue')
+GROUP BY A.customer_id,
+         C.city,
+         D.country,
+ORDER BY total_amount_paid DESC
+LIMIT 5) 
+SELECT COUNT(DISTINCT customer.customer_id) AS all_customer_count, 
+        COUNT(DISTINCT country.country) AS top_customer_count, 
+        country.country
+FROM customer_count_cte
+LEFT JOIN customer ON customer.customer_id = customer.customer_id
+LEFT JOIN address ON customer.address_id = address.adress_id
+LEFT JOIN city ON address.city_id = city.city_id
+LEFT JOIN country ON city.country_id - country.country_id
+GROUP BY country.country
+ORDER BY all_customer_count DESC
+LIMIT 5
