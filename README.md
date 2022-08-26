@@ -7,5 +7,6 @@
 ###### 4. Where are customers with a high lifetime value based? 
 ###### 5. Do sales figures vary between geographic regions? 
 
+
 ###### Link to interactive Tableau visualizations: 
 ###### https://public.tableau.com/app/profile/melanie4177/viz/FinalSQLProject/SQLProject
