@@ -1,4 +1,4 @@
-# Rockbuster-Data-Analysis-SQL-Project-
+# SQL Project: Rockbuster Data Analysis
 ###### This section contains a SQL Project that I did while enrolled with Career Foundry. I was "hired" by a fictional company, Rockbuster Stealth, to help launch a strategy for a new online video service. I used SQL to analyze data to answer the company's key questions and presented the data through a powerpoint presentation. 
 ###### Key questions included the following:
 ###### 1. Which movies contributed to the most/least revenue gain? 
